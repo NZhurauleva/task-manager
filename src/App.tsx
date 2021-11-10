@@ -2,16 +2,20 @@ import { FunctionComponent } from 'react';
 
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 
+import { NavigationMenu } from './components/NavigationMenu/NavigationMenu';
+import { CreateTodo } from './components/CreateTodo/CreateTodo';
+
 const App: FunctionComponent = () => {
   return (
     <div>
       <Router>
+        <NavigationMenu />
         <Switch>
           <Route exact path="/edit">
             {/* */}
           </Route>
           <Route exact path="/">
-            {/* */}
+            <CreateTodo />
           </Route>
         </Switch>
       </Router>
