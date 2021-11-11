@@ -10,13 +10,17 @@ import {
   Input, Button, FormControl, Select, MenuItem, InputLabel, TextField,
 } from '@material-ui/core';
 
+import { AppToastMemo } from '../AppToast/AppToast';
+
 import { RootState } from '../../types/types';
 
 import {
-  EDIRTASK, STATUSES, BUTTONCANCEL, BUTTONEDIT,
+  EDIRTASK, STATUSES, BUTTONCANCEL, BUTTONEDIT, TEXTOFDISABLE,
 } from '../../constants';
 
 import { editTodo } from '../../store/actions/actions';
+
+import { handleClickNotify } from '../AppToast';
 
 import styles from './style.module.scss';
 
@@ -48,8 +52,27 @@ export const EditTodo: FunctionComponent = (): JSX.Element => {
     history.push('/');
   }, [history]);
 
+  const handleChangeSelect = useCallback((e: React.ChangeEvent<{ value: unknown }>) => {
+    const optionName = e.target.value;
+    const currentStatus = tasks[indexOfTodo]?.status;
+    if (currentStatus === 'ToDo' && optionName === 'InProgress') {
+      setStatus(optionName);
+    } else if (currentStatus === 'InProgress' && (optionName === 'inQA' || optionName === 'Blocked')) {
+      setStatus(optionName as string);
+    } else if (currentStatus === 'inQA' && (optionName === 'Done' || 'ToDo')) {
+      setStatus(optionName as string);
+    } else if (currentStatus === 'Done' && optionName === 'Deployed') {
+      setStatus(optionName);
+    } else if (currentStatus === 'Blocked' && optionName === 'ToDo') {
+      setStatus(optionName as string);
+    } else {
+      handleClickNotify(TEXTOFDISABLE);
+    }
+  }, [indexOfTodo, tasks]);
+
   return (
     <div className={styles.container}>
+      <AppToastMemo />
       <div className={styles.containerCard}>
         <span className={styles.heading}>{EDIRTASK}</span>
         <Input
@@ -76,7 +99,7 @@ export const EditTodo: FunctionComponent = (): JSX.Element => {
           <InputLabel id="demo-simple-select-label">Status</InputLabel>
           <Select
             value={status}
-            // onChange={handleChangeSelect}
+            onChange={handleChangeSelect}
           >
             {STATUSES.map((item) => {
               return <MenuItem value={item} key={item}>{item}</MenuItem>;

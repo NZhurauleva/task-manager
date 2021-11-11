@@ -24,11 +24,11 @@ const todosReducers = (state = initialState, action: TodoState): TodoModel[] => 
           title: action.title,
           description: action.description,
           status: action.status,
-          edited: !todo.edited,
+          edited: false,
         } : todo));
     case TOGGLE_TODO:
       return state.map((todo) => (todo.id === action.id
-        ? { ...todo, edited: !todo.edited } : todo));
+        ? { ...todo, edited: true } : todo));
     default:
       return state;
   }

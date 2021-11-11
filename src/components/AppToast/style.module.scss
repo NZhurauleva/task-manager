@@ -1,0 +1,34 @@
+.snack {
+  position: absolute !important;
+  left: 55%;
+  overflow-y: scroll !important;
+  padding-left: 50px !important;
+  width: 42% !important;
+  &::-webkit-scrollbar {
+    width: 0 !important;
+  }
+
+  .toastBody {
+    min-height: 30px !important;
+    background: linear-gradient(115deg, #5f93fc, #6a55ef, #f944ff) border-box;
+    color: #ffffff;
+    font-size: 16px;
+    width: 300px !important;
+    margin: 0;
+    border-radius: 10px;
+  }
+}
+
+div[aria-label="notification timer"] {
+  background: #ffffff;
+}
+
+@media (max-width: 700px) {
+  .snack {
+    width: 90% !important;
+    top: 60px !important;
+    .toastBody { 
+      width: 65%;
+    }
+  }
+}
