@@ -12,9 +12,10 @@ import { Zoom } from 'react-awesome-reveal';
 
 import { TodoModel } from '../../types/types';
 
-import { toggleTodo } from '../../store/actions/actions';
+import { toggleTodo, deleteTodo } from '../../store/actions/actions';
 
 import edit from '../../images/edit.png';
+import del from '../../images/delete.png';
 
 import styles from './style.module.scss';
 
@@ -37,9 +38,14 @@ const TodoItem: FunctionComponent<DataProps> = ({ task }:DataProps): JSX.Element
     history.push('/edit');
   }, [history]);
 
+  const handleClickDelete = useCallback((idItem) => {
+    dispatch(deleteTodo(idItem));
+  }, []);
+
   return (
     <Zoom>
       <div className={styles.container}>
+        <Button variant="outlined" onClick={() => handleClickDelete(id)} className={styles.btnDelete}><img src={del} alt="delete" /></Button>
         <span className={styles.title}>{title}</span>
         <span className={styles.description}>{description}</span>
         <div className={styles.containerBtn}>

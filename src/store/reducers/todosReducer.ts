@@ -1,6 +1,8 @@
 import { TodoState, TodoModel } from '../../types/types';
 
-import { ADD_TODO, EDIT_TODO, TOGGLE_TODO } from '../actions/actionsType';
+import {
+  ADD_TODO, EDIT_TODO, TOGGLE_TODO, DELETE_TODO,
+} from '../actions/actionsType';
 
 const initialState: TodoModel[] = [];
 
@@ -29,6 +31,8 @@ const todosReducers = (state = initialState, action: TodoState): TodoModel[] => 
     case TOGGLE_TODO:
       return state.map((todo) => (todo.id === action.id
         ? { ...todo, edited: true } : todo));
+    case DELETE_TODO:
+      return state.filter((todo) => todo.id !== action.id);
     default:
       return state;
   }
