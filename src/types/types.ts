@@ -1,3 +1,5 @@
+import rootReducers from '../store/reducers/index';
+
 export interface TodoState {
     type: string;
     title: string;
@@ -12,3 +14,5 @@ export interface TodoModel {
     id: number;
     status: string;
   }
+
+export type RootState = ReturnType<typeof rootReducers>

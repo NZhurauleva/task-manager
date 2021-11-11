@@ -2,7 +2,10 @@ import React, {
   FunctionComponent, useState, useCallback, useEffect,
 } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { TextField, Input, Button } from '@material-ui/core';
+
+import { TodoItemMemo } from '../TodoItem/TodoItem';
 
 import {
   TASKS, ADDNEWTASK, TEXTNOTASKS, ADDTASK,
@@ -13,9 +16,12 @@ import addTodo from '../../store/actions/actions';
 import list from '../../images/list.png';
 
 import styles from './style.module.scss';
+import { TodoModel, RootState } from '../../types/types';
 
 export const CreateTodo: FunctionComponent = (): JSX.Element => {
   const dispatch = useDispatch();
+  const tasks = useSelector((state: RootState) => state?.todosReducers);
+
   const [title, setTitle] = useState<string>('');
   const [description, setDescription] = useState<string>('');
 
@@ -64,10 +70,17 @@ export const CreateTodo: FunctionComponent = (): JSX.Element => {
           <img src={list} alt="list" />
           <span>{TASKS}</span>
         </div>
-        {/* {tasks.length > 0 ? (
-          <div className={styles.tasks} />
+        {tasks.length > 0 ? (
+          <div className={styles.tasks}>
+            {tasks.map((task: TodoModel) => (
+              <TodoItemMemo
+                task={task}
+                key={task.id}
+              />
+            ))}
+          </div>
         )
-          : <div className={styles.caption}><span>{TEXTNOTASKS}</span></div>} */}
+          : <div className={styles.caption}><span>{TEXTNOTASKS}</span></div>}
       </div>
     </div>
   );
