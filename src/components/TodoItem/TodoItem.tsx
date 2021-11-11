@@ -40,7 +40,7 @@ const TodoItem: FunctionComponent<DataProps> = ({ task }:DataProps): JSX.Element
 
   const handleClickDelete = useCallback((idItem) => {
     dispatch(deleteTodo(idItem));
-  }, []);
+  }, [dispatch]);
 
   return (
     <Zoom>

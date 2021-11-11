@@ -4,16 +4,16 @@ import rootReducers from './reducers/index';
 
 import { RootState } from '../types/types';
 
-function saveToLocalStorage(state: RootState) {
+const saveToLocalStorage = (state: RootState) => {
   try {
     const serialisedState = JSON.stringify(state);
     localStorage.setItem('persistantState', serialisedState);
   } catch (e) {
     console.log(e);
   }
-}
+};
 
-function loadFromLocalStorage() {
+const loadFromLocalStorage = () => {
   try {
     const serialisedState = localStorage.getItem('persistantState');
     if (serialisedState === null) return undefined;
@@ -22,7 +22,7 @@ function loadFromLocalStorage() {
     console.log(e);
     return undefined;
   }
-}
+};
 
 const store = createStore(rootReducers, loadFromLocalStorage());
 
