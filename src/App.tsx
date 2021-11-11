@@ -4,6 +4,7 @@ import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 
 import { NavigationMenu } from './components/NavigationMenu/NavigationMenu';
 import { CreateTodo } from './components/CreateTodo/CreateTodo';
+import { EditTodo } from './components/EditTodo/EditTodo';
 
 const App: FunctionComponent = () => {
   return (
@@ -12,7 +13,7 @@ const App: FunctionComponent = () => {
         <NavigationMenu />
         <Switch>
           <Route exact path="/edit">
-            {/* */}
+            <EditTodo />
           </Route>
           <Route exact path="/">
             <CreateTodo />

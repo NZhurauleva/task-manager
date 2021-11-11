@@ -1,15 +1,27 @@
-import { TodoState } from '../../types/types';
+import { TodoState, TodoToggle } from '../../types/types';
 
-import { ADD_TODO } from './actionsType';
+import { ADD_TODO, EDIT_TODO } from './actionsType';
 
 let nextId = 0;
 
-const addTodo = (title: string, description: string, status: string): TodoState => ({
+export const addTodo = (title: string, description: string, status: string): TodoState => ({
   type: ADD_TODO,
   title,
   description,
   status,
-  nextId: nextId++,
+  id: nextId++,
+  edited: false,
 });
 
-export default addTodo;
+export const editTodo = (title: string, description: string, status: string): TodoState => ({
+  type: EDIT_TODO,
+  title,
+  description,
+  status,
+  edited: false,
+});
+
+export const toggleTodo = (id: number): TodoToggle => ({
+  type: 'TOGGLE_TODO',
+  id,
+});

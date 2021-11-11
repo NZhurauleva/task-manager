@@ -4,15 +4,21 @@ export interface TodoState {
     type: string;
     title: string;
     description: string;
-    nextId: number;
+    id?: number;
     status: string;
+    edited: boolean;
+  }
+export interface TodoToggle {
+    type: string;
+    id: number;
   }
 
 export interface TodoModel {
     title: string;
     description: string;
-    id: number;
+    id?: number | undefined;
     status: string;
+    edited: boolean;
   }
 
 export type RootState = ReturnType<typeof rootReducers>

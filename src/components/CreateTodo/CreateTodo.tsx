@@ -7,16 +7,17 @@ import { TextField, Input, Button } from '@material-ui/core';
 
 import { TodoItemMemo } from '../TodoItem/TodoItem';
 
+import { TodoModel, RootState } from '../../types/types';
+
 import {
   TASKS, ADDNEWTASK, TEXTNOTASKS, ADDTASK,
 } from '../../constants';
 
-import addTodo from '../../store/actions/actions';
+import { addTodo } from '../../store/actions/actions';
 
 import list from '../../images/list.png';
 
 import styles from './style.module.scss';
-import { TodoModel, RootState } from '../../types/types';
 
 export const CreateTodo: FunctionComponent = (): JSX.Element => {
   const dispatch = useDispatch();
