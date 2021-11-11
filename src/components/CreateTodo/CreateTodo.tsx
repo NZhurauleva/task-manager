@@ -1,27 +1,19 @@
-import React, {
-  FunctionComponent, useState, useCallback, useEffect,
-} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { FunctionComponent, useState, useCallback } from 'react';
+
+import { useDispatch } from 'react-redux';
 
 import { TextField, Input, Button } from '@material-ui/core';
 
-import { TodoItemMemo } from '../TodoItem/TodoItem';
+import { Todos } from '../Todos/Todos';
 
-import { TodoModel, RootState } from '../../types/types';
-
-import {
-  TASKS, ADDNEWTASK, TEXTNOTASKS, ADDTASK,
-} from '../../constants';
+import { ADDNEWTASK, ADDTASK } from '../../constants';
 
 import { addTodo } from '../../store/actions/actions';
-
-import list from '../../images/list.png';
 
 import styles from './style.module.scss';
 
 export const CreateTodo: FunctionComponent = (): JSX.Element => {
   const dispatch = useDispatch();
-  const tasks = useSelector((state: RootState) => state?.todosReducers);
 
   const [title, setTitle] = useState<string>('');
   const [description, setDescription] = useState<string>('');
@@ -66,23 +58,7 @@ export const CreateTodo: FunctionComponent = (): JSX.Element => {
           {ADDTASK}
         </Button>
       </div>
-      <div className={styles.containerTasks}>
-        <div className={styles.titleTasks}>
-          <img src={list} alt="list" />
-          <span>{TASKS}</span>
-        </div>
-        {tasks.length > 0 ? (
-          <div className={styles.tasks}>
-            {tasks.map((task: TodoModel) => (
-              <TodoItemMemo
-                task={task}
-                key={task.id}
-              />
-            ))}
-          </div>
-        )
-          : <div className={styles.caption}><span>{TEXTNOTASKS}</span></div>}
-      </div>
+      <Todos />
     </div>
   );
 };

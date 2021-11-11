@@ -8,15 +8,8 @@
     border-radius: 20px;
     display: flex;
     align-items: center;
-    .navPath {
-      width: 57%;
-      display: flex;
-      justify-content: center;
-      .titlePath {
-        color: rgb(139, 139, 137);
-      }
-    }
-    .navLink {
+    justify-content: space-between;
+        .navLink {
       display: flex;
       align-items: center;
       text-decoration: none;
@@ -32,10 +25,7 @@
 @media (max-width: 1200px) {
   .container {
     .navMenu {
-      width: 70%;
-      .navPath {
-        width: 38%;
-      }
+      width: 80%;
       .navLink {
         .logo {
           font-size: 20px;
@@ -48,10 +38,7 @@
 @media (max-width: 534px) {
   .container {
     .navMenu {
-      width: 70%;
-      .navPath {
-        display: none;
-      }
+      width: 80%;
       .navLink {
         img {
           width: 40px;

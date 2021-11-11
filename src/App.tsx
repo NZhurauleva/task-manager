@@ -5,6 +5,7 @@ import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import { NavigationMenu } from './components/NavigationMenu/NavigationMenu';
 import { CreateTodo } from './components/CreateTodo/CreateTodo';
 import { EditTodo } from './components/EditTodo/EditTodo';
+import { Todos } from './components/Todos/Todos';
 
 const App: FunctionComponent = () => {
   return (
@@ -17,6 +18,9 @@ const App: FunctionComponent = () => {
           </Route>
           <Route exact path="/">
             <CreateTodo />
+          </Route>
+          <Route exact path="/todos">
+            <Todos />
           </Route>
         </Switch>
       </Router>

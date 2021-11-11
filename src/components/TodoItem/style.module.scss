@@ -11,15 +11,18 @@
   margin: 0 15px 20px 15px;
   background-color: rgba(255, 255, 255, 1);
   .btnDelete {
+    align-self: flex-end;
     border: none;
-    max-width: 24px;
-    min-width: 24px;
+    max-width: 16px;
+    min-width: 16px;
     padding: 0;
   }
   .title{
     font-weight: 600;
     font-size: 16px;
     overflow: hidden;
+    white-space: nowrap; 
+    text-overflow: ellipsis; 
   }
   .description{
     word-wrap: break-word;
