@@ -1,0 +1,92 @@
+.container {
+  width: 180px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  box-shadow: 0 0 5px 1px #bababa;
+  padding: 15px;
+  margin: 0 15px 20px 15px;
+  background-color: rgba(255, 255, 255, 1);
+  .btnDelete {
+    align-self: flex-end;
+    border: none;
+    max-width: 16px;
+    min-width: 16px;
+    padding: 0;
+  }
+  .title{
+    font-weight: 600;
+    font-size: 16px;
+    overflow: hidden;
+    white-space: nowrap; 
+    text-overflow: ellipsis; 
+  }
+  .description{
+    word-wrap: break-word;
+    height: 110px;
+    font-size: 14px;
+    overflow: hidden;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      width: 0px;
+    }
+  }
+  .containerBtn {
+    display: flex;
+    justify-content: space-between;
+  .status {
+    width: 90px;
+    height: 30px;
+    color: white;
+    background: linear-gradient(115deg, #5f93fc, #6a55ef, #f944ff) border-box;
+    border: 1px solid rgb(118, 32, 255);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .btn {
+    height: 32px;
+  }
+  }
+
+}
+@media (max-width: 1200px) {
+  .container {
+    width: 170px;
+    height: 190px;
+    padding: 10px;
+    margin: 0 10px 20px 10px;
+    .title{
+      font-weight: 600;
+      font-size: 14px;
+    }
+  }
+}
+
+@media (max-width: 766px) {
+  .container {
+    width: 170px;
+    height: 190px;
+    padding: 10px;
+    .title{
+      font-weight: 600;
+      font-size: 14px;
+    }
+  }
+}
+
+@media (max-width: 534px) {
+  .container {
+    width: 160px;
+    height: 180px;
+    padding: 8px;
+    .title{
+      font-weight: 600;
+      font-size: 14px;
+    }
+  }
+}
