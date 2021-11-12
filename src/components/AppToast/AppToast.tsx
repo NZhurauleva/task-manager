@@ -1,9 +1,11 @@
 import * as React from 'react';
-import { memo } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
-import styles from './style.module.scss';
 
+import { memo } from 'react';
+
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+import styles from './style.module.scss';
 
 const notifyActionInvestments = (modalMessage: string) => toast(modalMessage);
 
